@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+    gap: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    color: hotpink;
+}
+
+h2{
+    font-size: 20px;
+    color: rgb(252, 121, 187);
+}
+
+.select{
+    border: solid palevioletred 2px;
+    border-radius: 5px;
+    padding: 5px;
+    color: deeppink;
+    
+}
+
+.btn{
+    padding: 5px;
+    background-color: pink;
+    border: solid palevioletred 2px;
+    border-radius: 5px;
+    color: deeppink;
+    font-weight: bold;
+}
+
+.jugar{
+    color: rgb(255, 212, 219);
+    background-color: deeppink;
+    font-size: 15px;
+    border: solid palevioletred 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.hidden{
+    display: none;
+}
+
+.plays{
+    text-align: center;
+    color: rgb(252, 121, 187);
+}
+
+.score{
+    border: solid deeppink 2px;
+    border-radius: 5px;
+    background-color: rgb(255, 212, 219);
+    padding: 10px;
+    font-size: 18px;
+    color: rgb(255, 112, 183);
+    line-height: 40px;
+}
