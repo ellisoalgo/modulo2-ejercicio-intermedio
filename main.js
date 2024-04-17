@@ -40,6 +40,7 @@ function computerPlay(){
     return compPlay;
 };
 
+//puntuacion inicial
 let finalCompScore= 0;
 let finalPlayerScore = 0;
 
@@ -53,61 +54,49 @@ function updateScores(){
 function comparePlays(){
     const playerChoice = inputPlayer();
     const computerChoice = computerPlay();
-    if (playerChoice === 'piedra' && computerChoice === 'piedra'){
+    if (playerChoice === 'selecciona'){
+        outputMsg.innerHTML = 'Debes elegir una opción';
+        playerHasChosen.innerHTML = "";
+        compHasChosen.innerHTML = "";
+    } else if (
+        //empate
+        (playerChoice === 'piedra' && computerChoice === 'piedra') || 
+        (playerChoice === 'papel' && computerChoice === 'papel') || 
+        (playerChoice === 'tijera' && computerChoice === 'tijera')
+    ){
         console.log("funciona");
         playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
         compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
         outputMsg.innerHTML = 'Empate';
-    } else if (playerChoice === 'piedra' && computerChoice === 'papel'){
+
+    } else if (
+        // has perdido
+        (playerChoice === 'piedra' && computerChoice === 'papel') ||
+        (playerChoice === 'papel' && computerChoice === 'tijera') ||
+        (playerChoice === 'tijera' && computerChoice === 'piedra')
+    ){
         console.log("funciona");
         playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
         compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
         outputMsg.innerHTML = '¡Has perdido!';
         finalCompScore++;
-    } else if (playerChoice === 'piedra' && computerChoice === 'tijera'){
+    } 
+    else if (
+        //has ganado
+        (playerChoice === 'piedra' && computerChoice === 'tijera') ||
+        (playerChoice === 'papel' && computerChoice === 'piedra') ||
+        (playerChoice === 'tijera' && computerChoice === 'papel')
+    ){
         console.log("funciona");
         playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
         compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
         outputMsg.innerHTML = '¡Has ganado!';
         finalPlayerScore++;
-    } else if (playerChoice === 'papel' && computerChoice === 'papel'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = 'Empate';
-    } else if (playerChoice === 'papel' && computerChoice === 'tijera'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = '¡Has perdido!';
-        finalCompScore++;
-    } else if (playerChoice === 'papel' && computerChoice === 'piedra'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = '¡Has ganado!';
-        finalPlayerScore++;
-    } else if (playerChoice === 'tijera' && computerChoice === 'tijera'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = 'Empate';
-    } else if (playerChoice === 'tijera' && computerChoice === 'piedra'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = '¡Has perdido!';
-        finalCompScore++;
-    } else if (playerChoice === 'tijera' && computerChoice === 'papel'){
-        console.log("funciona");
-        playerHasChosen.innerHTML = `Has elegido: ` + playerChoice;
-        compHasChosen.innerHTML = `La Computadora ha elegido: ` + computerChoice;
-        outputMsg.innerHTML = '¡Has ganado!';
-        finalPlayerScore++;
-    };
+    } 
     updateScores();
 };
 
+//reset game
 const handleReset = (event) =>{
     event.preventDefault();
     resetBtn.classList.add('hidden');
@@ -124,6 +113,7 @@ const handleReset = (event) =>{
 //button count
 let btnCount = 0;
 
+//button count + reaches 10
 function stopBtn(){
     btnCount++;
     console.log('button count is ' +btnCount);
